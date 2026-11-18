@@ -27,8 +27,8 @@ Ver [docs/hipotesis.md](docs/hipotesis.md).
 | Id | Estrategia | Idea principal | Efecto físico esperado | Responsable |
 |---|---|---|---|---|
 | A | Línea base | (situación inicial) | — | R2 |
-| B | | | | R3 |
-| C | | | | R3 |
+| B | Invariantes fuera del ciclo | Calcula una vez la potencia y cuota por solicitud; conserva el recorrido mensual | Menos operaciones repetidas y ciclos de CPU por solicitud | R3 (Integrante C) |
+| C | Fórmula cerrada con caché | Calcula el interés total con `m·cuota − P` y reutiliza el factor para tasa–plazo | Evita el recorrido por mes y aprovecha combinaciones repetidas | R3 (Integrante C) |
 
 ## 6. Cómo reproducir
 ```bash
@@ -37,8 +37,12 @@ pip install -r requirements.txt                          # opcional: psutil, mat
 python -m src.linea_base                                 # situación inicial
 python -m unittest discover -s pruebas                   # corrección
 python -m experimentos.ejecutar_experimento              # experimento formal -> resultados/resultados.csv
-python ruta/a/analizar_resultados.py resultados/resultados.csv
+python analizar_resultados.py resultados/resultados.csv
 ```
+
+El análisis genera `resultados/resumen_estadistico.csv`, `tiempo_vs_n.png` y
+`comparacion_n_mayor.png`. Los gráficos usan las corridas de tiempo, sin la
+corrida separada de memoria.
 
 ## 7. Integrantes y roles
 | Rol | Integrante | Responsabilidad principal |
