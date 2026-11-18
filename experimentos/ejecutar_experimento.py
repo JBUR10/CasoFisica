@@ -16,13 +16,12 @@ from pathlib import Path
 
 from herramientas.labmedicion import Experimento, calentar
 from src import linea_base
-# TODO (R3): importar los módulos de las estrategias alternativas
-# from src import estrategia_b, estrategia_c
+from src import estrategia_b, estrategia_c
 
 ESTRATEGIAS = {
     "A_linea_base": linea_base,
-    # TODO (R3): "B_...": estrategia_b,
-    # TODO (R3): "C_...": estrategia_c,
+    "B_invariantes": estrategia_b,
+    "C_formula_cache": estrategia_c,
 }
 
 # TODO (R1): justificar en docs/protocolo.md la elección de tamaños y repeticiones
@@ -42,8 +41,13 @@ def main() -> None:
     for n, d in datos.items():                                       # verificación de corrección
         esperado = linea_base.ejecutar(d)
         for nombre, mod in ESTRATEGIAS.items():
-            assert mod.ejecutar(d) == esperado, f"{nombre} da un resultado distinto para n={n}"
-            # TODO (R2): si el resultado es de coma flotante, comparar con tolerancia
+            obtenido = mod.ejecutar(d)
+            # Comparación absoluta en COP: los recorridos de coma flotante pueden
+            # redondear distinto aunque representen el mismo resultado monetario.
+            assert abs(obtenido - esperado) <= 0.01, (
+                f"{nombre} difiere de la línea base para n={n}: "
+                f"{obtenido} vs {esperado} COP"
+            )
 
     plan = [(e, n, r) for e in ESTRATEGIAS for n in tamanos for r in range(1, reps + 1)]
     random.Random(42).shuffle(plan)                                  # orden aleatorio (control de deriva)
