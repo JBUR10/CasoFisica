@@ -44,6 +44,10 @@ El análisis genera `resultados/resumen_estadistico.csv`, `tiempo_vs_n.png` y
 `comparacion_n_mayor.png`. Los gráficos usan las corridas de tiempo, sin la
 corrida separada de memoria.
 
+La descripción de la referencia A y su costo computacional está en
+[docs/linea_base.md](docs/linea_base.md). Las pruebas de R2 verifican B y C
+contra A con tolerancia monetaria de `0,01 COP`.
+
 ## 7. Integrantes y roles
 | Rol | Integrante | Responsabilidad principal |
 |---|---|---|
