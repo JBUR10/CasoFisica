@@ -66,9 +66,4 @@ Los roles son flexibles: **todos** participan en la comprensión física y en el
 - [Decisiones técnicas](docs/decisiones.md) · [Uso de IA](docs/uso_ia.md) · [Informe](docs/informe.md)
 
 ## 9. Resultados y conclusiones (Clase 5)
-El experimento formal registró 10 corridas por estrategia y tamaño. Para n = 10.000, las medias fueron A: 0,4838 s, B: 0,02570 s y C: 0,001903 s; las reducciones observadas frente a A fueron 94,69 % y 99,61 %. La equivalencia monetaria cumplió la tolerancia de 0,01 COP, con una diferencia máxima justo en ese límite. Hay CV > 10 % en B para n=10.000 y en C para todos los tamaños; esos grupos deben repetirse con mediciones más largas. No se midieron energía ni temperatura.
-
-- Tabla estadística: [resumen con media, mediana, desviación, CV e IC95 %](resultados/resumen_estadistico.csv)
-- Gráficos: [tiempo vs. n](resultados/tiempo_vs_n.png) · [comparación para n mayor](resultados/comparacion_n_mayor.png)
-- Interpretación y propuesta: [informe científico](docs/informe.md) · [decisiones de hipótesis](docs/hipotesis.md)
-- Evidencia cruda: [resultados/resultados.csv](resultados/resultados.csv)
+El experimento formal registró 10 corridas por estrategia y tamaño; los resultados completos e IC95 % están en `resultados/resumen_estadistico.csv`. Para n = 10.000, las medias fueron A: 0,4838 s (IC95 % 0,4736–0,4940), B: 0,0257 s (0,0237–0,0277) y C: 0,00190 s (0,00162–0,00218). La equivalencia numérica pasó las pruebas con tolerancia de 0,01 COP. Algunos CV exceden 10 %, especialmente para C por el tiempo de corrida muy breve; interpretar esa comparación como preliminar y repetir esos grupos antes de concluir. Ver [protocolo](docs/protocolo.md) y [entorno](docs/entorno.md).
