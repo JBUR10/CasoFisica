@@ -12,13 +12,16 @@ El simulador de créditos recalcula planes de pago completos para miles de solic
 src/linea_base.py calcula potencias con bucles, recalcula la cuota cada mes y repite cálculos para combinaciones tasa–plazo idénticas.
 
 | Medición preliminar (Clase 3) | Valor | Unidad |
-|---|---|---|
-| n utilizado | | registros |
-| Tiempo de ejecución (1 corrida) | | s |
-| Equipo y fecha | | — |
+|---|---:|---|
+| n utilizado | 5.000 | solicitudes |
+| Intereses totales | 93.103.574.568,94 | COP |
+| Tiempo de ejecución (1 corrida) | 0,32 | s |
+| Equipo y fecha | ASUS TUF Gaming A15 FA506NCG, Windows 11, CPython 3.13.15 · 25-11-2026 | — |
+
+Comando ejecutado: `py -3.13 -m src.linea_base`. El tiempo aislado es evidencia preliminar y no se usa como comparación formal.
 
 ## 3. Pregunta de investigación
-_¿Cómo cambia ________ (VD, unidad) cuando ________ (VI), manteniendo ________ (VC)?_
+_¿Cómo cambia el tiempo de ejecución (s) cuando se cambia la estrategia de cálculo (A, B o C) y el número de solicitudes (2.000, 5.000 o 10.000), manteniendo iguales los datos de entrada por tamaño, el equipo y la versión de Python?_
 
 ## 4. Hipótesis
 Ver [docs/hipotesis.md](docs/hipotesis.md).
@@ -59,4 +62,4 @@ Los roles son flexibles: **todos** participan en la comprensión física y en el
 - [Decisiones técnicas](docs/decisiones.md) · [Uso de IA](docs/uso_ia.md) · [Informe](docs/informe.md)
 
 ## 9. Resultados y conclusiones (Clase 5)
-_Resumen de máximo 5 líneas con cifras, unidades e intervalo de confianza._
+El experimento formal registró 10 corridas por estrategia y tamaño; los resultados completos e IC95 % están en `resultados/resumen_estadistico.csv`. Para n = 10.000, las medias fueron A: 0,4838 s (IC95 % 0,4736–0,4940), B: 0,0257 s (0,0237–0,0277) y C: 0,00190 s (0,00162–0,00218). La equivalencia numérica pasó las pruebas con tolerancia de 0,01 COP. Algunos CV exceden 10 %, especialmente para C por el tiempo de corrida muy breve; interpretar esa comparación como preliminar y repetir esos grupos antes de concluir. Ver [protocolo](docs/protocolo.md) y [entorno](docs/entorno.md).
