@@ -58,10 +58,10 @@ def main() -> None:
     resumen = a.salida / "resumen_estadistico.csv"
     with resumen.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["estrategia", "n", "repeticiones", "media_s", "sd_s", "cv_pct", "ic95_inf_s", "ic95_sup_s"])
+        w.writerow(["estrategia", "n", "repeticiones", "media_s", "mediana_s", "sd_s", "cv_pct", "ic95_inf_s", "ic95_sup_s"])
         for (estrategia, n), vals in sorted(grupos.items(), key=lambda x: (x[0][1], x[0][0])):
             media, sd, cv, margen = media_ic95(vals)
-            w.writerow([estrategia, n, len(vals), f"{media:.8f}", f"{sd:.8f}", f"{cv:.3f}", f"{media-margen:.8f}", f"{media+margen:.8f}"])
+            w.writerow([estrategia, n, len(vals), f"{media:.8f}", f"{statistics.median(vals):.8f}", f"{sd:.8f}", f"{cv:.3f}", f"{media-margen:.8f}", f"{media+margen:.8f}"])
 
     try:
         import matplotlib.pyplot as plt
@@ -80,7 +80,7 @@ def main() -> None:
                 xs.append(n); ys.append(media); es.append(margen)
         if xs:
             ax.errorbar(xs, ys, yerr=es, marker="o", capsize=3, label=estrategia)
-    ax.set(xscale="log", yscale="log", xlabel="Solicitudes n", ylabel="Tiempo de ejecución (s)", title="Tiempo de ejecución por tamaño de entrada")
+    ax.set(xscale="log", yscale="log", xlabel="Número de solicitudes, n (solicitudes)", ylabel="Tiempo de ejecución (s)", title="Tiempo de ejecución por tamaño de entrada")
     ax.grid(True, which="both", alpha=.25); ax.legend(); fig.tight_layout()
     fig.savefig(a.salida / "tiempo_vs_n.png", dpi=160); plt.close(fig)
 
@@ -89,9 +89,14 @@ def main() -> None:
     medias = [media_ic95(grupos[(e, nmax)])[0] for e in nombres]
     errores = [media_ic95(grupos[(e, nmax)])[3] for e in nombres]
     fig, ax = plt.subplots()
-    ax.bar(nombres, medias, yerr=errores, capsize=4)
-    ax.set(ylabel="Tiempo de ejecución (s)", title=f"Comparación para n = {nmax}")
-    ax.tick_params(axis="x", rotation=20); ax.grid(True, axis="y", alpha=.25); fig.tight_layout()
+    posiciones = list(range(len(nombres)))
+    ax.errorbar(medias, posiciones, xerr=errores, fmt="o", capsize=5, markersize=7)
+    ax.set_xscale("log")
+    ax.set_yticks(posiciones, nombres)
+    ax.set(xlabel="Tiempo de ejecución medio (s, escala logarítmica)", title=f"Tiempo por estrategia para n = {nmax} solicitudes")
+    for y, media in zip(posiciones, medias):
+        ax.annotate(f"{media:.4g} s", (media, y), xytext=(8, 0), textcoords="offset points", va="center")
+    ax.grid(True, axis="x", which="both", alpha=.25); fig.tight_layout()
     fig.savefig(a.salida / "comparacion_n_mayor.png", dpi=160); plt.close(fig)
     print(f"Resumen: {resumen}\nGráficos: {a.salida / 'tiempo_vs_n.png'}, {a.salida / 'comparacion_n_mayor.png'}")
 
