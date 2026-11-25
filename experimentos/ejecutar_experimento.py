@@ -24,7 +24,7 @@ ESTRATEGIAS = {
     "C_formula_cache": estrategia_c,
 }
 
-# TODO (R1): justificar en docs/protocolo.md la elección de tamaños y repeticiones
+# Tamaños y repeticiones justificados en docs/protocolo.md.
 TAMANOS = [2_000, 5_000, 10_000]
 REPETICIONES = 10
 

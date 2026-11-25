@@ -26,3 +26,13 @@ Para repetir el registro en este equipo:
 ```powershell
 py -3.13 -c "import json; from herramientas.labmedicion import describir_entorno; print(json.dumps(describir_entorno(), indent=2, ensure_ascii=False))"
 ```
+
+## Verificación posterior del repositorio
+
+El 25 de noviembre de 2026 se verificó con Python 3.14.0 que las cuatro pruebas de corrección continúan aprobadas:
+
+```powershell
+python -m unittest discover -s pruebas -v
+```
+
+Esta comprobación valida el código y no reemplaza el experimento formal registrado con CPython 3.13.15.
