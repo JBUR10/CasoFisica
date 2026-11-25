@@ -54,10 +54,10 @@ contra A con tolerancia monetaria de `0,01 COP`.
 ## 7. Integrantes y roles
 | Rol | Integrante | Responsabilidad principal |
 |---|---|---|
-| R1 — Coordinación y protocolo experimental | _(nombre)_ | Mantiene el protocolo y la bitácora de decisiones; controla variables; modera issues y la planeación. |
-| R2 — Desarrollo de estrategia base | _(nombre)_ | Comprende y documenta la línea base; asegura la verificación de corrección (pruebas) de todas las estrategias. |
-| R3 — Estrategias alternativas y optimización | _(nombre)_ | Diseña e implementa las estrategias alternativas y justifica físicamente por qué deberían cambiar las magnitudes. |
-| R4 — Automatización de mediciones y análisis | _(nombre)_ | Automatiza experimentos y registro CSV; produce estadísticas y gráficos; documenta el entorno. |
+| R1 — Coordinación y protocolo experimental | _Joel Andrés Mendoza Buriticá_ | Mantiene el protocolo y la bitácora de decisiones; controla variables; modera issues y la planeación. |
+| R2 — Desarrollo de estrategia base | _Sebastian Ramirez Castrillon_ | Comprende y documenta la línea base; asegura la verificación de corrección (pruebas) de todas las estrategias. |
+| R3 — Estrategias alternativas y optimización | _Luis Felipe Sierra - Sebastian Ramirez Castrillon_ | Diseña e implementa las estrategias alternativas y justifica físicamente por qué deberían cambiar las magnitudes. |
+| R4 — Automatización de mediciones y análisis | _Joel Andrés Mendoza - Luis Felipe Sierra_ | Automatiza experimentos y registro CSV; produce estadísticas y gráficos; documenta el entorno. |
 
 Los roles son flexibles: **todos** participan en la comprensión física y en el código.
 
