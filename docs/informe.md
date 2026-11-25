@@ -1,6 +1,6 @@
 # Rendimiento de estrategias para calcular intereses de créditos
 
-**Equipo:** 5 · **Integrantes:** A, B y C (nombres por completar) · **Fecha:** 25 de noviembre de 2026 · **Repositorio:** [CasoFisica](https://github.com/JBUR10/CasoFisica)
+**Equipo:** 5 · **Integrantes:** Joel Andrés Mendoza Buriticá (A), Sebastian Ramirez Castrillon (B) y Luis Felipe Sierra (C) · **Fecha:** 25 de noviembre de 2026 · **Repositorio:** [CasoFisica](https://github.com/JBUR10/CasoFisica)
 
 ## Resumen
 
