@@ -37,6 +37,15 @@ class TestCorreccion(unittest.TestCase):
     def test_linea_base_lista_vacia(self):
         self.assertEqual(linea_base.ejecutar([]), 0.0)
 
+    def test_caso_analitico_un_mes(self):
+        # Con un solo periodo, el interes es P*i: 1.000.000 COP * 1 %.
+        solicitudes = [(1_000_000.0, 0.01, 1)]
+        esperado = 10_000.0
+        self.assertEqual(linea_base.ejecutar(solicitudes), esperado)
+        for nombre, modulo in ESTRATEGIAS.items():
+            with self.subTest(estrategia=nombre):
+                self.assertEqual(modulo.ejecutar(solicitudes), esperado)
+
     def test_datos_reproducibles_con_semilla(self):
         self.assertEqual(linea_base.preparar(100, semilla=17), linea_base.preparar(100, semilla=17))
 
